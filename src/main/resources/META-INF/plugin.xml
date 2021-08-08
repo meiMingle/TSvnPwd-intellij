@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.meimingle.tsvnpwdintellij</id>
-    <name>TSvnPwd-intellij</name>
+    <name>TSvnPwd4intellij</name>
     <vendor>meimingle</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -8,12 +8,20 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyProjectService"/>
+<!--        <applicationService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyApplicationService"/>-->
+<!--        <projectService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyProjectService"/>-->
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.meimingle.tsvnpwdintellij.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+<!--        <listener class="com.github.meimingle.tsvnpwdintellij.listeners.MyProjectManagerListener"-->
+<!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
     </applicationListeners>
+
+
+    <actions>
+        <group id="tsvnpwdintellij.HelloMenu" text="Sample Menu" description="Sample menu">
+            <add-to-group group-id="ToolsMenu" anchor="last"  />
+            <action id="Myplugin.Textboxes" class="com.gethub.meimingle.tsvnpwdintellij.actions.HelloAction" text="Text Boxes" description="A test menu item" />
+        </group>
+    </actions>
 </idea-plugin>
