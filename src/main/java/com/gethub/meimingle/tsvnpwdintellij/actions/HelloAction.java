@@ -9,8 +9,8 @@ import com.intellij.openapi.ui.Messages;
 public class HelloAction extends AnAction {
 
     public  HelloAction() {
-        // 设置菜单项名称
-        super("Text _Boxes");
+        //
+        super("_Hello_Text _Boxes");
         // 还可以设置菜单项名称，描述，图标
         // super("Text _Boxes","Item description",IconLoader.getIcon("/Mypackage/icon.png"));
     }

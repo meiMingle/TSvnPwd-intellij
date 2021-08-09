@@ -1,6 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+// import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -69,9 +69,9 @@ tasks {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
-    }
+//    withType<KotlinCompile> {
+//        kotlinOptions.jvmTarget = "1.8"
+//    }
 
     withType<Detekt> {
         jvmTarget = "1.8"
