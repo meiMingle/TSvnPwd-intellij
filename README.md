@@ -4,37 +4,27 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Verify the [pluginGroup](/gradle.properties), [plugin ID](/src/main/resources/META-INF/plugin.xml) and [sources package](/src/main/kotlin).
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the Plugin ID in the above README badges.
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
-
+## 介绍
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
-
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
-
-To keep everything working, do not remove `<!-- ... -->` sections. 
+忘记svn密码了吗？如果您在过去的某个时候选中了“保存身份验证”框，但此后忘记了您输入的密码，则该工具会很有帮助。
+本项目核心代码移植自[http://www.leapbeyond.com/ric/TSvnPD/](http://www.leapbeyond.com/ric/TSvnPD/) 。同原作者描述，程序仅基于单一的默认环境进行编程，无法解析 Subversion 中所有允许的配置语法。
+并且需要注意的是，仅当使用最初登录SVN时的同一 Windows 用户帐户登录并通过身份验证时，本工具才能有效解析出SVN的相关信息。
 <!-- Plugin description end -->
 
-## Installation
+## 安装
 
-- Using IDE built-in plugin system:
+- 使用IDE内置插件系统:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "TSvnPwd-intellij"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "TSvnPwd"</kbd> >
   <kbd>Install Plugin</kbd>
   
-- Manually:
+- 手动:
 
   Download the [latest release](https://github.com/meiMingle/TSvnPwd-intellij/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 
 ---
-Plugin based on the [IntelliJ Platform Plugin Template][template].
+插件基于 [IntelliJ Platform Plugin Template][template].开发
 
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template

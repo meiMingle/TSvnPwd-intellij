@@ -21,7 +21,7 @@
     <actions>
         <action id="com.gethub.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" class="com.gethub.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" text="_Find Svn Password" description="Find svn password!">
             <add-to-group group-id="HelpMenu" anchor="last" />
-            <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"  />
+            <add-to-group group-id="WelcomeScreen.Options" anchor="last"  />
         </action>
     </actions>
 </idea-plugin>

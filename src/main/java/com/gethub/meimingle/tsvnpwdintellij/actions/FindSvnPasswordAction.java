@@ -1,10 +1,15 @@
 package com.gethub.meimingle.tsvnpwdintellij.actions;
 
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.IconLoader;
+import com.tomxin.tool.tangible.ParserProgram;
+import com.tomxin.tool.tangible.Result;
+
+import java.util.List;
 
 /**
  * @author TomXin
@@ -12,21 +17,35 @@ import com.intellij.openapi.util.IconLoader;
 public class FindSvnPasswordAction extends AnAction implements DumbAware {
 
     public FindSvnPasswordAction() {
-        //
-        //super("_Find Svn Password");
         // 还可以设置菜单项名称，描述，图标
-        super("_Find Svn Password","Find svn password", IconLoader.getIcon("",
-                FindSvnPasswordAction.class));
-        AnAction optionsGroup = ActionManager.getInstance().getAction("WelcomeScreen.Options");
-        if ((optionsGroup instanceof DefaultActionGroup)) {
-            ((DefaultActionGroup) optionsGroup).add(this);
-        }
+        super("_Find Svn Password");
     }
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        Project project = e.getData(PlatformDataKeys.PROJECT);
-        String txt= Messages.showInputDialog(project, "What is your name?", "Input your name", Messages.getQuestionIcon());
-        Messages.showMessageDialog(project, "Hello, " + txt + "!\n I am glad to see you.", "Information", Messages.getInformationIcon());
+        Project project = e.getData(CommonDataKeys.PROJECT);
+        //String txt= Messages.showInputDialog(project, "What is your name?", "Input Your Name", Messages.getQuestionIcon());
+        List<Result> allSvnInfo = ParserProgram.findAllSvnInfo();
+        if (!allSvnInfo.isEmpty()) {
+            Messages.showMessageDialog(project, formatSvnInfo(allSvnInfo), "SVN Information", Messages.getInformationIcon());
+        } else {
+            Messages.showMessageDialog(project, "Can not find any information of svn", "Information", Messages.getInformationIcon());
+        }
+
+    }
+
+    private String formatSvnInfo(List<Result> results) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("---------------------------------------------------\n");
+        for (Result result : results) {
+            stringBuilder.append("FileName = " + result.getFilename() + "\n");
+            stringBuilder.append("Repository = " + result.getRepository() + "\n");
+            stringBuilder.append("Username = " + result.getUsername() + "\n");
+            stringBuilder.append("Password = " + result.getDecryptedPassword() + "\n");
+            stringBuilder.append("---------------------------------------------------\n");
+        }
+
+        return stringBuilder.toString();
+
     }
 }
