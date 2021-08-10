@@ -1,6 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.kotlin.config.JvmTarget
+
 // import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -75,15 +75,15 @@ detekt {
 tasks {
     // Set the compatibility versions to 1.8
     withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
-        targetCompatibility = JavaVersion.VERSION_1_8.toString()
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
     }
 //    withType<KotlinCompile> {
 //        kotlinOptions.jvmTarget = "1.8"
 //    }
 
     withType<Detekt> {
-        jvmTarget = JvmTarget.JVM_1_8.description
+        jvmTarget = "11"
     }
 
     patchPluginXml {
