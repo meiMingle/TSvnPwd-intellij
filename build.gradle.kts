@@ -1,5 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.kotlin.config.JvmTarget
 // import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -24,10 +25,18 @@ version = properties("pluginVersion")
 
 // Configure project's dependencies
 repositories {
+    mavenLocal()
+    maven { url = uri("https://maven.aliyun.com/repository/public/") }
     mavenCentral()
+    maven { url = uri("https://plugins.gradle.org/m2/") }
+    maven { url = uri("https://oss.sonatype.org/content/repositories/releases/") }
+    maven { url = uri("https://dl.bintray.com/jetbrains/intellij-plugin-service") }
+    maven { url = uri("https://dl.bintray.com/jetbrains/intellij-third-party-dependencies/") }
 }
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
+    // https://mvnrepository.com/artifact/net.java.dev.jna/jna
+    implementation("net.java.dev.jna:jna:5.8.0")
 }
 
 // Configure gradle-intellij-plugin plugin.
@@ -66,15 +75,15 @@ detekt {
 tasks {
     // Set the compatibility versions to 1.8
     withType<JavaCompile> {
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
+        targetCompatibility = JavaVersion.VERSION_1_8.toString()
     }
 //    withType<KotlinCompile> {
 //        kotlinOptions.jvmTarget = "1.8"
 //    }
 
     withType<Detekt> {
-        jvmTarget = "1.8"
+        jvmTarget = JvmTarget.JVM_1_8.description
     }
 
     patchPluginXml {

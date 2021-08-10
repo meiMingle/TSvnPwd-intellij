@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.meimingle.tsvnpwdintellij</id>
-    <name>TSvnPwd4intellij</name>
+    <name>TSvnPwd</name>
     <vendor>meimingle</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -19,9 +19,9 @@
 
 
     <actions>
-        <group id="tsvnpwdintellij.HelloMenu" text="Sample Menu" description="Sample menu">
-            <add-to-group group-id="ToolsMenu" anchor="last"  />
-            <action id="Myplugin.Textboxes" class="com.gethub.meimingle.tsvnpwdintellij.actions.HelloAction" text="Text Boxes" description="A test menu item" />
-        </group>
+        <action id="com.gethub.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" class="com.gethub.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" text="_Find Svn Password" description="Find svn password!">
+            <add-to-group group-id="HelpMenu" anchor="last" />
+            <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"  />
+        </action>
     </actions>
 </idea-plugin>
