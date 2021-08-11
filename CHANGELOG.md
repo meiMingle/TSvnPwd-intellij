@@ -2,7 +2,6 @@
 
 # TSvnPwd-intellij Changelog
 
-## [Unreleased]
 ## [0.0.1]
 ### Added
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
