@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.1] - 2021-08-11
+## [0.0.1]
 ### Added
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
 - 基本实现解析本地已保存svn认证信息功能
+- 合并IntelliJ Platform Plugin Template 的next 分支的部分功能
