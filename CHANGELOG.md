@@ -1,15 +1,18 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# Changelog
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+# TSvnPwd-intellij Changelog
 
 ## [Unreleased]
 
+## [0.0.2]
+### Added
+- Merged some functions of the next branch of the IntelliJ Platform Plugin Template
+- 合并IntelliJ Platform Plugin Template 的next 分支的部分功能
+
+
 ## [0.0.1]
 ### Added
+- Generate scaffolding from [IntelliJ Platform Plugin Template](https:github.comJetBrainsintellij-platform-plugin-template).
+- Basically realize the function of parsing locally saved svn authentication information
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
 - 基本实现解析本地已保存svn认证信息功能
-- 合并IntelliJ Platform Plugin Template 的next 分支的部分功能
