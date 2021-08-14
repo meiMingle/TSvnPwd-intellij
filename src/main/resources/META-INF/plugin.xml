@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.meimingle.tsvnpwdintellij</id>
     <name>TSvnPwd</name>
-    <vendor>meimingle</vendor>
+    <vendor>meiMingle</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
