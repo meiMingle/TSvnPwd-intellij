@@ -12,8 +12,6 @@ plugins {
     id("org.jetbrains.intellij") version "1.1.4"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
     id("org.jetbrains.changelog") version "1.2.1"
-    // Gradle Qodana Plugin
-    id("org.jetbrains.qodana") version "0.1.5"
 }
 
 group = properties("pluginGroup")
@@ -50,11 +48,6 @@ intellij {
 changelog {
     version.set(properties("pluginVersion"))
     groups.set(emptyList())
-}
-
-// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
-qodana {
-//    saveReport.set(true)
 }
 
 tasks {
