@@ -3,6 +3,10 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+### Added
+- Code optimization
+- 代码优化
+
 
 ## [0.0.2]
 ### Added
