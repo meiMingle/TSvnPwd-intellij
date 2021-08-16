@@ -5,7 +5,9 @@
 ## [Unreleased]
 ### Added
 - Code optimization
+- Update description
 - 代码优化
+- 更新描述
 
 
 ## [0.0.2]
