@@ -5,9 +5,9 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     // Java support
-    id("java")
+    java
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.5.21"
+    kotlin("jvm") version "1.5.21"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.intellij") version "1.1.4"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
@@ -54,6 +54,7 @@ tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
         withType<JavaCompile> {
+            options.encoding = "UTF-8"
             sourceCompatibility = it
             targetCompatibility = it
         }

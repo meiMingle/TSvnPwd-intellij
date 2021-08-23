@@ -1,5 +1,8 @@
 package com.tomxin.tool.tangible;
 
+/**
+ * @author meiMingle
+ */
 public class Result {
 
     String filename;

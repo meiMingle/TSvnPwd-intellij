@@ -6,10 +6,7 @@ import com.sun.jna.platform.win32.Crypt32Util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 
 /**
@@ -40,26 +37,6 @@ public class ParserProgram {
      */
     private static final int MAX_FILES_COUNT = 200;
 
-/*    public static void main(String[] args) {
-
-        boolean interactive = true;
-        if (args.length > 0 && "-S".equals(args[1].toUpperCase())) {
-            // Silent (no prompt) switch
-            interactive = false;
-        }
-
-        try {
-            Run();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            if (interactive) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Press any key.");
-                String key = scanner.next();
-            }
-        }
-    }*/
 
     public static List<Result> findAllSvnInfo() {
         System.out.println("TortoiseSVN Password Decrypter v" + Version());
@@ -198,9 +175,9 @@ public class ParserProgram {
         encryptedPassword.argValue = "";
 
         // Read file and parse key/value pairs
-        HashMap<String, String> results = null;
+        Map<String, String> results = null;
         try {
-            results = AuthFileParser.ReadFile(path);
+            results = AuthFileParser.readFile(path);
             if (results.get("username") != null && !"".equals(results.get("username"))) {
                 username.argValue = results.get("username");
             } else {
@@ -227,7 +204,6 @@ public class ParserProgram {
     private static boolean tryDecryptPassword(String encrypted, RefObject<String> decrypted) {
         decrypted.argValue = "";
         try {
-            //Native.toByteArray(encrypted, StandardCharsets.UTF_8);
             byte[] data = Base64.getDecoder().decode(encrypted);
             byte[] unprotectedData = Crypt32Util.cryptUnprotectData(data);
             decrypted.argValue = Native.toString(unprotectedData);

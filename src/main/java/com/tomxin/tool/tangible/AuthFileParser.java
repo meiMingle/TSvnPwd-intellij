@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple,naive parser to read a limited subset of Subversion configuration files.
@@ -44,7 +46,7 @@ public class AuthFileParser {
     /**
      * Values read so far
      */
-    private HashMap<String, String> props = new HashMap<String, String>();
+    private HashMap<String, String> props = new HashMap<>();
 
 
     /**
@@ -156,9 +158,9 @@ public class AuthFileParser {
         return true;
     }
 
-    public static HashMap<String, String> ReadFile(String path) throws IOException {
+    public static Map<String, String> readFile(String path) throws IOException {
         AuthFileParser parser = new AuthFileParser();
-        try (BufferedReader brd = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));) {
+        try (BufferedReader brd = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));) {
 
 
             String line = null;
@@ -172,7 +174,7 @@ public class AuthFileParser {
                 if (!line.trim().startsWith("#")) {
 
                     // Check for end of file marker
-                    if (parser.state == States.ExpectingKeyDef && "END".equals(line.trim().toUpperCase())) {
+                    if (parser.state == States.ExpectingKeyDef && "END".equalsIgnoreCase(line.trim())) {
                         // Return results
                         return parser.props;
                     }

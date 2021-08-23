@@ -12,19 +12,17 @@ import com.tomxin.tool.tangible.Result;
 import java.util.List;
 
 /**
- * @author TomXin
+ * @author meiMingle
  */
 public class FindSvnPasswordAction extends AnAction implements DumbAware {
 
     public FindSvnPasswordAction() {
-        // 还可以设置菜单项名称，描述，图标
         super("_Find Svn Password");
     }
 
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(CommonDataKeys.PROJECT);
-        //String txt= Messages.showInputDialog(project, "What is your name?", "Input Your Name", Messages.getQuestionIcon());
         List<Result> allSvnInfo = ParserProgram.findAllSvnInfo();
         if (!allSvnInfo.isEmpty()) {
             Messages.showMessageDialog(project, formatSvnInfo(allSvnInfo), "SVN Information", Messages.getInformationIcon());
