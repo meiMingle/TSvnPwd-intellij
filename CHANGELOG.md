@@ -3,6 +3,10 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+### Removed
+- Reduce the installation package by removing some unnecessary code and dependencies
+- 通过移除一些非必要的代码和依赖减小安装包
+
 ## [0.0.4]
 ### Changed
 - Code optimization

@@ -51,6 +51,10 @@ changelog {
 }
 
 tasks {
+    // See https://github.com/JetBrains/gradle-intellij-plugin/blob/master/FAQ.md for details.
+    buildSearchableOptions{
+        enabled = false
+    }
     // Set the JVM compatibility versions
     properties("javaVersion").let {
         withType<JavaCompile> {
