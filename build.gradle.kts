@@ -29,7 +29,7 @@ repositories {
 }
 dependencies {
     // https://mvnrepository.com/artifact/net.java.dev.jna/jna
-    implementation("net.java.dev.jna:jna:5.8.0")
+    //implementation("net.java.dev.jna:jna:5.8.0")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
