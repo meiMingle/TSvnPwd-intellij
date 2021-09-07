@@ -5,13 +5,15 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     // Java support
-    java
+    id("java")
     // Kotlin support
-    kotlin("jvm") version "1.5.21"
-    // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "1.1.4"
-    // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-    id("org.jetbrains.changelog") version "1.2.1"
+    id("org.jetbrains.kotlin.jvm") version "1.5.30"
+    // Gradle IntelliJ Plugin
+    id("org.jetbrains.intellij") version "1.1.6"
+    // Gradle Changelog Plugin
+    id("org.jetbrains.changelog") version "1.3.0"
+    // Gradle Qodana Plugin
+    id("org.jetbrains.qodana") version "0.1.12"
 }
 
 group = properties("pluginGroup")
@@ -50,6 +52,14 @@ changelog {
     groups.set(emptyList())
 }
 
+// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
+qodana {
+    cachePath.set(projectDir.resolve(".qodana").canonicalPath)
+    reportPath.set(projectDir.resolve("build/reports/inspections").canonicalPath)
+    saveReport.set(true)
+    showReport.set(System.getenv("QODANA_SHOW_REPORT").toBoolean())
+}
+
 tasks {
     // See https://github.com/JetBrains/gradle-intellij-plugin/blob/master/FAQ.md for details.
     buildSearchableOptions{
@@ -78,7 +88,7 @@ tasks {
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         pluginDescription.set(
-            File(projectDir, "README.md").readText().lines().run {
+            projectDir.resolve("README.md").readText().lines().run {
                 val start = "<!-- Plugin description -->"
                 val end = "<!-- Plugin description end -->"
 
@@ -90,7 +100,11 @@ tasks {
         )
 
         // Get the latest available change notes from the changelog file
-        changeNotes.set(provider { changelog.getLatest().toHTML() })
+        changeNotes.set(provider {
+            changelog.run {
+                getOrNull(properties("pluginVersion")) ?: getLatest()
+            }.toHTML()
+        })
     }
 
     runPluginVerifier {

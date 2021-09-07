@@ -3,6 +3,12 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+### Changed
+- Change log form
+- 改变日志形式
+- Code optimization
+- 代码优化
+
 ## [0.0.5]
 ### Removed
 - Reduce the installation package by removing some unnecessary code and dependencies
@@ -30,7 +36,7 @@
 
 ## [0.0.1]
 ### Added
-- Generate scaffolding from [IntelliJ Platform Plugin Template](https:github.comJetBrainsintellij-platform-plugin-template).
+- Generate scaffolding from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template).
 - Basically realize the function of parsing locally saved svn authentication information
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
 - 基本实现解析本地已保存svn认证信息功能

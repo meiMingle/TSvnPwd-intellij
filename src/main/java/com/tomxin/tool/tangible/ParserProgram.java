@@ -1,12 +1,16 @@
 package com.tomxin.tool.tangible;
 
 import com.google.common.collect.Lists;
+import com.intellij.openapi.diagnostic.Logger;
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.Crypt32Util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Base64;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 
 /**
@@ -18,6 +22,8 @@ import java.util.*;
  * reference to the original author in your source code.
  */
 public class ParserProgram {
+
+    private static final Logger LOG = Logger.getInstance(ParserProgram.class);
     /**
      * Error value returned by console program if failed
      */
@@ -39,8 +45,8 @@ public class ParserProgram {
 
 
     public static List<Result> findAllSvnInfo() {
-        System.out.println("TortoiseSVN Password Decrypter v" + Version());
-        System.out.println("The original version of this program was created by Leapbeyond Solutions use C#.The java version created by meiMingle on github.");
+        LOG.info("TortoiseSVN Password Decrypter v" + Version());
+        LOG.info("The original version of this program was created by Leapbeyond Solutions use C#.The java version created by meiMingle on github.");
 
         // Look for password files
         String folder = java.nio.file.Paths.get(System.getenv("APPDATA")).resolve(AUTHFILE_SUBPATH).toString();
@@ -52,8 +58,7 @@ public class ParserProgram {
         if (files.length < 1) {
             throw new RuntimeException("No files with exactly 32 characters in the filename found in " + folder);
         }
-        System.out.println();
-        System.out.printf("Found %1$s cached credentials files in %2$s%n", files.length, folder);
+        LOG.info(String.format("Found %1$s cached credentials files in %2$s%n", files.length, folder));
 
 
         // Iterate each
@@ -64,20 +69,19 @@ public class ParserProgram {
                 ExitWithError("Listing aborted.  Too many files in " + folder, ERROR_TOOMANY);
             }
             result.setFilename(files[i].getName());
-            System.out.println();
-            System.out.println("Parsing " + (files[i].getName()));
+            LOG.info("Parsing " + (files[i].getName()));
 
-            RefObject<String> tempRefUsername = new RefObject<String>(result.getUsername());
-            RefObject<String> tempRefRepository = new RefObject<String>(result.getRepository());
-            RefObject<String> tempRefEncryptedPassword = new RefObject<String>(result.getEncryptedPassword());
+            RefObject<String> tempRefUsername = new RefObject<>(result.getUsername());
+            RefObject<String> tempRefRepository = new RefObject<>(result.getRepository());
+            RefObject<String> tempRefEncryptedPassword = new RefObject<>(result.getEncryptedPassword());
             if (TryParseAuthFile(files[i].getAbsolutePath(), tempRefUsername, tempRefRepository, tempRefEncryptedPassword)) {
                 result.setEncryptedPassword(tempRefEncryptedPassword.argValue);
                 result.setRepository(tempRefRepository.argValue);
                 result.setUsername(tempRefUsername.argValue);
-                RefObject<String> tempRefDecryptedPassword = new RefObject<String>(tempRefEncryptedPassword.argValue);
+                RefObject<String> tempRefDecryptedPassword = new RefObject<>(tempRefEncryptedPassword.argValue);
                 if (tryDecryptPassword(tempRefEncryptedPassword.argValue, tempRefDecryptedPassword)) {
                     result.setDecryptedPassword(tempRefDecryptedPassword.argValue);
-                    System.out.println("Password: " + tempRefDecryptedPassword.argValue);
+                    LOG.info("Password: " + tempRefDecryptedPassword.argValue);
                 } else {
                     result.setDecryptedPassword(tempRefDecryptedPassword.argValue);
                 }
@@ -90,65 +94,7 @@ public class ParserProgram {
     }
 
 
-    private static void Run() {
 
-        // Show version and introductory info
-
-        System.out.println("TortoiseSVN Password Decrypter v" + Version());
-        System.out.println("The original version of this program was created by Leapbeyond Solutions use C#.The java version created by meiMingle on github.");
-
-        // Look for password files
-        String folder = java.nio.file.Paths.get(System.getenv("APPDATA")).resolve(AUTHFILE_SUBPATH).toString();
-        if (!(new File(folder)).isDirectory()) {
-            ExitWithError("Path not found: " + folder);
-        }
-
-        //String[] files = Directory.GetFiles(folder, new String('?', 32)); // Password filenames appear to be 32 characters in length
-        File file = new File(folder);
-        File[] files = file.listFiles((path, name) -> name.length() == 32);
-        if (files.length < 1) {
-            ExitWithError("No files with exactly 32 characters in the filename found in " + folder);
-        }
-
-        System.out.println();
-        System.out.printf("Found %1$s cached credentials files in %2$s%n", files.length, folder);
-
-        // Iterate each
-        String username = "", repository = "", encryptedPassword = "", decryptedPassword = "";
-        for (int i = 0; i < files.length; i++) {
-
-            if (i > MAX_FILES_COUNT) {
-                ExitWithError("Listing aborted.  Too many files in " + folder, ERROR_TOOMANY);
-            }
-
-            System.out.println();
-            System.out.println("Parsing " + (files[i].getName()));
-
-            RefObject<String> tempRefUsername = new RefObject<String>(username);
-            RefObject<String> tempRefRepository = new RefObject<String>(repository);
-            RefObject<String> tempRefEncryptedPassword = new RefObject<String>(encryptedPassword);
-            if (TryParseAuthFile(files[i].getAbsolutePath(), tempRefUsername, tempRefRepository, tempRefEncryptedPassword)) {
-                encryptedPassword = tempRefEncryptedPassword.argValue;
-                repository = tempRefRepository.argValue;
-                username = tempRefUsername.argValue;
-                System.out.println("Repository: " + repository);
-                System.out.println("Username: " + username);
-                RefObject<String> tempRefDecryptedPassword = new RefObject<String>(decryptedPassword);
-                if (tryDecryptPassword(encryptedPassword, tempRefDecryptedPassword)) {
-                    decryptedPassword = tempRefDecryptedPassword.argValue;
-                    System.out.println("Password: " + decryptedPassword);
-                } else {
-                    decryptedPassword = tempRefDecryptedPassword.argValue;
-                }
-            } else {
-                encryptedPassword = tempRefEncryptedPassword.argValue;
-                repository = tempRefRepository.argValue;
-                username = tempRefUsername.argValue;
-            }
-
-        } // end for
-
-    }
 
     private static String Version() {
         Properties props = System.getProperties();
@@ -163,8 +109,7 @@ public class ParserProgram {
     }
 
     private static void ExitWithError(String error, int errorCode) {
-        System.out.println();
-        System.out.println(error);
+        LOG.info(error);
         System.exit(errorCode);
     }
 
@@ -195,7 +140,7 @@ public class ParserProgram {
             }
             return true;
         } catch (AuthParseException | IOException e) {
-            System.out.println(e.getMessage());
+            LOG.error(e);
             return false;
         }
 
@@ -209,8 +154,7 @@ public class ParserProgram {
             decrypted.argValue = Native.toString(unprotectedData);
             return true;
         } catch (RuntimeException e) {
-            e.printStackTrace();
-            System.out.println("Unable to decrypt the password");
+            LOG.error("Unable to decrypt the password",e);
             return false;
         }
     }
