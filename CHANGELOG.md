@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 ### Changed
+- Compatible with 2021.3
+- 兼容2021.3
+
+## [0.0.6]
+### Changed
 - Change log form
 - 改变日志形式
 - Code optimization
