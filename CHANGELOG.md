@@ -4,10 +4,13 @@
 
 ## [Unreleased]
 ### Changed
-- Compatible with 2021.3
-- 兼容2021.3
 - Code optimization
 - 代码优化
+
+## [0.0.7]
+### Changed
+- Compatible with 2021.3
+- 兼容2021.3
 
 ## [0.0.6]
 ### Changed
