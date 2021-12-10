@@ -3,6 +3,8 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+
+## [0.0.8]
 ### Changed
 - Code optimization
 - 代码优化
@@ -29,7 +31,6 @@
 - Code optimization
 - 代码优化
 
-
 ## [0.0.3]
 ### Added
 - Code optimization
@@ -37,12 +38,10 @@
 - 代码优化
 - 更新描述
 
-
 ## [0.0.2]
 ### Added
 - Merged some functions of the next branch of the IntelliJ Platform Plugin Template
 - 合并IntelliJ Platform Plugin Template 的next 分支的部分功能
-
 
 ## [0.0.1]
 ### Added
