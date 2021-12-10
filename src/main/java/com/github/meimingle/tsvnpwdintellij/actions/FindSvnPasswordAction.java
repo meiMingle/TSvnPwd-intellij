@@ -1,4 +1,4 @@
-package com.gethub.meimingle.tsvnpwdintellij.actions;
+package com.github.meimingle.tsvnpwdintellij.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -36,10 +36,10 @@ public class FindSvnPasswordAction extends AnAction implements DumbAware {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("---------------------------------------------------\n");
         for (Result result : results) {
-            stringBuilder.append("FileName = " + result.getFilename() + "\n");
-            stringBuilder.append("Repository = " + result.getRepository() + "\n");
-            stringBuilder.append("Username = " + result.getUsername() + "\n");
-            stringBuilder.append("Password = " + result.getDecryptedPassword() + "\n");
+            stringBuilder.append("FileName = ").append(result.getFilename()).append("\n");
+            stringBuilder.append("Repository = ").append(result.getRepository()).append("\n");
+            stringBuilder.append("Username = ").append(result.getUsername()).append("\n");
+            stringBuilder.append("Password = ").append(result.getDecryptedPassword()).append("\n");
             stringBuilder.append("---------------------------------------------------\n");
         }
 

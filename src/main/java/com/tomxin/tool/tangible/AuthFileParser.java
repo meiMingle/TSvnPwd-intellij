@@ -144,7 +144,7 @@ public class AuthFileParser {
 
         if (state == States.ExpectingKeyName) {
             keyName = val.trim();
-            if (keyName.equals("")) {
+            if ("".equals(keyName)) {
                 return false;
             }
             if (keyName.contains(" ")) {
