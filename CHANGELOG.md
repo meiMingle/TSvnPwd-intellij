@@ -6,6 +6,8 @@
 ### Changed
 - Compatible with 2021.3
 - 兼容2021.3
+- Code optimization
+- 代码优化
 
 ## [0.0.6]
 ### Changed
