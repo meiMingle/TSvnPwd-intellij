@@ -3,10 +3,12 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+
+## [0.1.0]
 ### Added
 - Update template to lasted version
 - 升级模板版本至最新版本
-- 
+-
 
 ## [0.0.8]
 ### Changed
