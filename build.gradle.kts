@@ -7,9 +7,9 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.6.10"
+    id("org.jetbrains.kotlin.jvm") version "1.6.21"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.5.3"
+    id("org.jetbrains.intellij") version "1.6.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
     // Gradle Qodana Plugin
@@ -34,7 +34,14 @@ dependencies {
     //implementation("net.java.dev.jna:jna:5.8.0")
 }
 
-// Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+// Set the JVM language level used to compile sources and generate files - Java 11 is required since 2020.3
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+// Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     pluginName.set(properties("pluginName"))
     version.set(properties("platformVersion"))
