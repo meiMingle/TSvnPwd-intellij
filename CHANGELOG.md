@@ -4,8 +4,8 @@
 
 ## [Unreleased]
 ### Added
-- Update template to V1.1.2
-- 升级模板版本至V1.1.2
+- Update template to lasted version
+- 升级模板版本至最新版本
 - 
 
 ## [0.0.8]
