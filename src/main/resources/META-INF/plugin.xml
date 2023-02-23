@@ -1,3 +1,4 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.meimingle.tsvnpwdintellij</id>
     <name>TSvnPwd</name>
@@ -6,6 +7,8 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+
+    <!--<resource-bundle>messages.MyBundle</resource-bundle>-->
 
     <extensions defaultExtensionNs="com.intellij">
 <!--        <applicationService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyApplicationService"/>-->

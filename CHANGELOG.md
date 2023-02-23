@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Changed
+- Align with latest plugin template
+- 升级模板版本至最新版本
+
+
+
 ## [0.1.0]
 ### Added
 - Update template to lasted version
@@ -55,3 +61,5 @@
 - Basically realize the function of parsing locally saved svn authentication information
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
 - 基本实现解析本地已保存svn认证信息功能
+
+[Unreleased]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.0...HEAD
