@@ -7,6 +7,8 @@
 ### Changed
 - Align with latest plugin template
 - 升级模板版本至最新版本
+- Update README.md
+- 更新 README.md
 
 
 
