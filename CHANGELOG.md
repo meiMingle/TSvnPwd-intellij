@@ -9,6 +9,8 @@
 - 升级模板版本至最新版本
 - Update README.md
 - 更新 README.md
+- Change the compatibility scope of the plugin
+- 更改插件的兼容范围
 
 
 
@@ -16,7 +18,6 @@
 ### Added
 - Update template to lasted version
 - 升级模板版本至最新版本
--
 
 ## [0.0.8]
 ### Changed
