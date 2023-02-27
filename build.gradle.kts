@@ -25,7 +25,7 @@ version = properties("pluginVersion").get()
 // Configure project's dependencies
 repositories {
     mavenLocal()
-    maven { url = uri("https://maven.aliyun.com/repository/public/") }
+    // maven { url = uri("https://maven.aliyun.com/repository/public/") }
     mavenCentral()
     maven { url = uri("https://plugins.gradle.org/m2/") }
     maven { url = uri("https://oss.sonatype.org/content/groups/public") }
