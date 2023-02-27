@@ -3,6 +3,9 @@
 # TSvnPwd-intellij Changelog
 
 ## [Unreleased]
+### Changed
+- Change the compatibility scope of the plugin
+- 更改插件的兼容范围
 
 
 ## [0.1.1]
