@@ -6,7 +6,9 @@
 
 ### Changed
 - Change the compatibility scope of the plugin
-- 更改插件的兼容范围
+- Sync Plugin Template v1.9.0
+- 更改插件的兼容范围 (222 - 232.*)
+- 同步插件模板 1.9.0
 
 ## [0.1.2] - 2023-02-27
 
