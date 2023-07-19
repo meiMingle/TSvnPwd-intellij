@@ -8,21 +8,11 @@
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
-    <!--<resource-bundle>messages.MyBundle</resource-bundle>-->
+    <resource-bundle>messages.TSvnPwdBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-<!--        <applicationService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyApplicationService"/>-->
-<!--        <projectService serviceImplementation="com.github.meimingle.tsvnpwdintellij.services.MyProjectService"/>-->
-    </extensions>
-
-    <applicationListeners>
-<!--        <listener class="com.github.meimingle.tsvnpwdintellij.listeners.MyProjectManagerListener"-->
-<!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
-    </applicationListeners>
-
-
-    <actions>
-        <action id="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" class="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" text="_Find Svn Password" description="Find svn password!">
+    <actions resource-bundle="messages.TSvnPwdBundle">
+<!--        <action id="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" class="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" text="_Find Svn&#45;&#45; Password" description="Find svn&#45;&#45; password!">-->
+        <action id="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction" class="com.github.meimingle.tsvnpwdintellij.actions.FindSvnPasswordAction">
             <add-to-group group-id="HelpMenu" anchor="last" />
             <add-to-group group-id="WelcomeScreen.Options" anchor="last"  />
         </action>
