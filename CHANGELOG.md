@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.1.3] - 2023-07-19
+
 ### Changed
 - Change the compatibility scope of the plugin
 - Sync Plugin Template v1.9.0
@@ -86,7 +88,8 @@
 - 从[IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template). 生成脚手架
 - 基本实现解析本地已保存svn认证信息功能
 
-[Unreleased]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/meiMingle/TSvnPwd-intellij/compare/v0.0.8...v0.1.0
